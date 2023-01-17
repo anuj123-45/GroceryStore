@@ -18,7 +18,20 @@ mongoose.connect("mongodb+srv://anuj_1358:Sc7H56ZBksq68suM@devtown.3dsdhuu.mongo
 
 
 app.post("/login",(req,res)=>{
-    res.send("My api login");
+    const {email,password}=req.body;
+    userModel.findOne({email:email},(err,user)=>{
+        if(user){
+         if(password===user.password){
+            res.send({message:"Login Successfull",user});
+         }
+         else {
+            res.send({message:"Password didn't match"})
+         }
+        }
+        else {
+            res.send({message:"User not registered"});
+        }
+    })
 })
 
 app.post("/register",(req,res)=>{
@@ -29,21 +42,21 @@ app.post("/register",(req,res)=>{
         res.send({message:"User already registered"})
     }
     else {
-        userModel.create({
+      const user=  userModel.create({
            name:name,
            email:email,
            password:password
            })
          
-        //    userModel.save(err=>{
-        //     if(err){
-        //         res.send(err)
-        //     }
-        //     else {
-        //         res.send({message:"Successfully Registered"});
+           user.save(err=>{
+            if(err){
+                res.send(err)
+            }
+            else {
+                res.send({message:"Successfully Registered"});
              
-        //     }
-        //    })
+            }
+           })
     }
    })
  return res.json({"userdata":userModel});

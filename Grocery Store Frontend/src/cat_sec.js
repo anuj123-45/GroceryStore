@@ -82,7 +82,7 @@ const handleChange = (item, d) => {
       <div  className="shop-cart-main">
         
     
-      <Nav count={cart.length} handleShow={handleShow} searchCat={searchCat}/>
+      <Nav count={cart.length} handleShow={handleShow} searchCat={searchCat} />
   <br/>
 
   <br/>

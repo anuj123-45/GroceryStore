@@ -1,12 +1,8 @@
 import React from "react";
 import { Form, Button } from "semantic-ui-react";
 import { useForm } from "react-hook-form";
-import "./register.css";
-import {
-  Link,
-  useNavigate,
-} from "react-router-dom";
-
+import "./App.css";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function FormValidation() {
   const navigate = useNavigate();
@@ -33,7 +29,7 @@ export default function FormValidation() {
       handler: function () {
         if (confirm("Payment Done")) {
           alert("Visit Again");
-        navigate("/");
+          navigate("/home");
         }
       },
       prefill: {
@@ -80,7 +76,10 @@ export default function FormValidation() {
             <h1 style={{ color: "black", fontWeight: "bolder" }}>
               Enter your Details
             </h1>
-            <Form onSubmit={handleSubmit(onSubmit)} style={{ padding: "50px" ,width:"390px"}}>
+            <Form
+              onSubmit={handleSubmit(onSubmit)}
+              style={{ padding: "50px", width: "390px" }}
+            >
               <Form.Field>
                 <label>First Name</label>
                 <input
@@ -126,8 +125,9 @@ export default function FormValidation() {
                 </p>
               )}
               <Form.Field>
+               
+               
                 <label>Phone no</label>
-                &ensp; &ensp; &ensp;
                 <input
                   placeholder="Phone"
                   type="tel"

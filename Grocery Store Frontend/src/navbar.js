@@ -74,20 +74,10 @@ const Nav = (props) => {
   </button>
 }
       </div> 
-
-      
-      {/* <div>
-        <button type="button" className="btn btn-warning">
-           <Link to="/register" className="text-decoration-none text-dark" >
-             Register
-           </Link>
-         </button>
-        </div> */}
-
       
           <div>
         <button type="button" className="btn btn-danger">
-           <Link to="/login" className="text-decoration-none text-dark" >
+           <Link to="/" className="text-decoration-none text-dark" >
              Logout
            </Link>
          </button>
