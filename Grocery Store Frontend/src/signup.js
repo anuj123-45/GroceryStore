@@ -21,12 +21,15 @@ const handleChange=(e)=>{
   })
 }
 
-const register=()=>{
+const register=(e)=>{
   const {name,email,password,reEnterPassword}=user;
   if(name && email && password && (password===reEnterPassword)){
   axios.post("http://localhost:9092/register",user)
-  .then(response=>alert("Registration Successfull"));
-  navigate("/home");
+  .then(res=>{
+    alert(res.data.message)
+    navigate("/");
+  })
+
   }
   else {
     alert("Invalid Input");

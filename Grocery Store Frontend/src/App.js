@@ -25,6 +25,7 @@ export default function App() {
           path="/home"
           element={user && user._id ? <Cat /> : <Login setLoginUser={setLoginUser}/>}
         />
+         <Route exact path="/home" element={<Cat />} />
         <Route path="/mainpage/home" element={<Cat />} />
         <Route path="/cartlist" element={<CartList />} />
         <Route path="/goto/payment/paymentgateway" element={<Payment />} />

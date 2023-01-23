@@ -36,22 +36,26 @@ app.post("/login",(req,res)=>{
 
 app.post("/register",(req,res)=>{
    
-   const {name,email,password}=req.body;
-   userModel.findOne({email:email},(err,user)=>{
-    if(user){
-        res.send({message:"User already registered"})
-    }
-    else {
-      const user=  userModel.create({
-           name:name,
-           email:email,
-           password:password
-           })
-         
-         
-    }
-   })
- return res.json({"userdata":userModel});
+    const { name, email, password} = req.body
+    userModel.findOne({email: email}, (err, user) => {
+        if(user){
+            res.send({message: "User already registerd"});
+            return;
+        } else {
+            const user = new userModel({
+                name,
+                email,
+                password
+            })
+            user.save(err => {
+                if(err) {
+                    res.send(err)
+                } else {
+                    res.send( { message: "Successfully Registered, Please login now." })
+                }
+            })
+        }
+    })
 })
 
 app.listen(9092,()=>{
