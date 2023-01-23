@@ -48,15 +48,7 @@ app.post("/register",(req,res)=>{
            password:password
            })
          
-           user.save(err=>{
-            if(err){
-                res.send(err)
-            }
-            else {
-                res.send({message:"Successfully Registered"});
-             
-            }
-           })
+         
     }
    })
  return res.json({"userdata":userModel});
